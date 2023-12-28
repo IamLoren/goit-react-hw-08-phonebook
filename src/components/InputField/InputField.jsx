@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addContactThunk } from '../../redux/operations.js';
+import { addContactThunk } from '../../redux/contacts/operations.js';
 import s from './InputField.module.css';
-import { selectContacts } from '../../redux/selectors.js';
+import { selectContacts } from '../../redux/contacts/selectors.js';
 import Header from '../../components/Header/Header.jsx';
 
 export const InputField = () => {
@@ -14,7 +14,7 @@ export const InputField = () => {
     const phone = event.target.elements.number.value;
     event.target.elements.name.value = '';
     event.target.elements.number.value = '';
-    if (contacts?.items?.some(contact => contact.name === name)) {
+    if (contacts?.some(contact => contact.name === name)) {
       alert(`Contact with the name ${name} already exists!`);
       return;
     }

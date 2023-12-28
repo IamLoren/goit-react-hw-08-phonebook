@@ -1,6 +1,6 @@
 import { InputField } from './InputField/InputField';
 import  ContactList  from '../components/ContactList/ContactList';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../pages/Home.jsx';
 import Register from 'pages/Register/Register';
 import Login from 'pages/Login/Login';
@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshThunk } from '../redux/auth/operations.js';
 import PrivateRoute from '../routesConfig/PrivateRoute.jsx';
+import PublicRoute from '../routesConfig/PublicRoute';
 
 
 export const App = () => {
@@ -31,8 +32,9 @@ export const App = () => {
         <Route path='/' element={<Home />}/>
         <Route path='/input' element={<PrivateRoute><InputField /></PrivateRoute>}/>
         <Route path='/list' element={<PrivateRoute><ContactList /></PrivateRoute>}/>
-        <Route path='/register' element={<Register />}/>
-        <Route path='/login' element={<Login />}/>
+        <Route path='/register' element={<PublicRoute><Register /></PublicRoute>}/>
+        <Route path='/login' element={<PublicRoute><Login /></PublicRoute>}/>
+        <Route path="*" element={<Navigate to="/" />} /> 
       </Routes>
   
       

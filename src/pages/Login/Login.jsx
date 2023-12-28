@@ -3,11 +3,9 @@ import Header from 'components/Header/Header';
 import {useForm} from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from '../../redux/auth/operations.js';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-    const navigate = useNavigate()
     const dispatch = useDispatch()
     const {register, handleSubmit} = useForm({
         defaultValues: {
@@ -17,7 +15,6 @@ const Login = () => {
     });
     const submit = data => {
         dispatch(loginThunk(data)).unwrap().then((res) => {
-            navigate('/list')
             toast.success(`Welcome ${res.user.name}`)
         }).catch(()=> {
            toast.error('Oops! Something went wrong')

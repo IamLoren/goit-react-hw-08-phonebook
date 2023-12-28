@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectUserEmail } from '../../redux/selectors.js';
+import { selectUserEmail } from '../../redux/contacts/selectors.js';
 import styled from 'styled-components';
 import { logoutThunk } from '../../redux/auth/operations.js';
 
