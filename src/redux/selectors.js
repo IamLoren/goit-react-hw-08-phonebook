@@ -4,3 +4,4 @@ export const selectFilter = (state) => state.contactsSlice.filter;
 export const selectLoading = (state) => state.contactsSlice.contacts.isLoading;
 export const selectIsLogged = state => state.authSlice.isLogged;
 export const selectUserName = state => state.authSlice.user.name;
+export const selectUserEmail = state => state.authSlice.user.email;

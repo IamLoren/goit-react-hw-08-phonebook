@@ -37,6 +37,7 @@ export const authSlice = createSlice({
             state.isLogged = false
         })
         .addCase(refreshThunk.fulfilled, (state, {payload}) => {
+            console.log('payload', {payload})
             state.user.name = payload.name
             state.user.email = payload.email
             state.isLogged = true

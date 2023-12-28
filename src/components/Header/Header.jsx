@@ -1,13 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { selectIsLogged, selectUserName } from "../../redux/selectors.js";
 import styled from "styled-components";
-import { logoutThunk } from "../../redux/auth/operations.js";
+import UserMenu from "components/UserMenu/UserMenu.jsx";
 
 const Header = ({title}) => {
   const user = useSelector(selectUserName)
   const isLoggedIn = useSelector(selectIsLogged);
-  const dispatch = useDispatch();
+  
   return (
     <StyledHeader>
         <nav>
@@ -20,10 +20,8 @@ const Header = ({title}) => {
         <NavLink to='/login'>Login</NavLink>
         </>}
 
-        {isLoggedIn && <>
-        | <button onClick={()=> {
-          dispatch(logoutThunk())
-        }}>Exit</button></>}
+        {isLoggedIn &&
+          <UserMenu />}
         
     </nav>
     {user &&  <h1>Welcome to your Phonebook, {user}!</h1>}

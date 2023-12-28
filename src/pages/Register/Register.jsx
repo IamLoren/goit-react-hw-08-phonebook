@@ -16,15 +16,15 @@ const Register = () => {
         <form onSubmit={handleSubmit(submit)}>
             <label >
                 <span>Name</span>
-                <input {...register('name')} type="text" />
+                <input {...register('name')} type="text" placeholder='Type your name'/>
             </label>
             <label >
                 <span>Email</span>
-                <input {...register('email')} type="email" />
+                <input {...register('email')} type="email" placeholder='Type your email'/>
             </label>
             <label >
                 <span>Password</span>
-                <input {...register('password')} type="password" />
+                <input {...register('password')} type="password" placeholder='Type your password' />
             </label>
             <button type='submit'>Register</button>
         </form>
