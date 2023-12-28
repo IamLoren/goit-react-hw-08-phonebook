@@ -4,11 +4,16 @@ import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home.jsx';
 import Register from 'pages/Register/Register';
 import Login from 'pages/Login/Login';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshThunk } from '../redux/auth/operations.js';
 
 
 export const App = () => {
-  
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshThunk())
+  },[dispatch])
   return (
     <div
       style={{

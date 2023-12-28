@@ -31,7 +31,8 @@ export const logoutThunk = createAsyncThunk('auth/logout', async (credentials, t
 })
 
 export const refreshThunk = createAsyncThunk('auth/refresh', async (_, thunkApi) => {
-     const savedToken = thunkApi.getState().auth.token;
+     const savedToken = thunkApi.getState().authSlice.token;
+     console.log(savedToken);
        if (savedToken) {
         setToken(savedToken)
        } else {
@@ -40,6 +41,7 @@ export const refreshThunk = createAsyncThunk('auth/refresh', async (_, thunkApi)
        
        try {
       const {data} = await api.get('users/current')
+      console.log(data)
       return data
     } catch (error) {
         return thunkApi.rejectWithValue(error.message)

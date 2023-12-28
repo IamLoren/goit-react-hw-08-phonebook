@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginThunk, logoutThunk, refreshThunk, registerThunk } from "./operations";
+import { toast } from "react-toastify";
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -17,6 +18,10 @@ export const authSlice = createSlice({
             state.user = payload.user
             state.token = payload.token
             state.isLogged = true
+        })
+        .addCase(registerThunk.rejected, (state, {payload}) => {
+           toast.error('Error! User exist!')
+            state.isLogged = false
         })
         .addCase(loginThunk.fulfilled, (state, {payload}) => {
             state.user = payload.user
