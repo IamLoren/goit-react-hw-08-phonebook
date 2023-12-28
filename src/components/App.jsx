@@ -1,17 +1,18 @@
 import { InputField } from './InputField/InputField';
-import { ContactsList } from './contactsList/ContactsList';
-import { SearchFilter } from './SearchFilter/SearchFilter';
-import { useSelector } from 'react-redux';
-import { Hearts } from 'react-loader-spinner';
-import { selectError, selectLoading } from './../redux/selectors.js'
+import  ContactList  from '../components/ContactList/ContactList';
+import { Routes, Route } from 'react-router-dom';
+import Home from '../pages/Home.jsx';
+import Register from 'pages/Register/Register';
+import Login from 'pages/Login/Login';
+
 
 export const App = () => {
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
+  
 
   return (
     <div
       style={{
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -20,24 +21,15 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <h1>Phonebook</h1>
-      <InputField />
-      <h2>Contacts</h2>
-      <SearchFilter />
-      {loading && (
-          <Hearts
-            height="80"
-            width="80"
-            color="purple"
-            ariaLabel="hearts-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
-        )}
-    <ContactsList>
-        {error && <h2>Oops! Something went wrong! Try again!</h2>}
-      </ContactsList>
+      <Routes>
+        <Route path='/' element={<Home />}/>
+        <Route path='/input' element={<InputField />}/>
+        <Route path='/list' element={<ContactList />}/>
+        <Route path='/register' element={<Register />}/>
+        <Route path='/login' element={<Login />}/>
+      </Routes>
+  
+      
     </div>
   );
 };
